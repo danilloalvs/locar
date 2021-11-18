@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" maxHeight="680.0" maxWidth="1000.0" minHeight="680.0" minWidth="1000.0" prefHeight="680.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="locarfx.Controller.CadastraVeiculoController">
+   <children>
+      <Label layoutX="335.0" layoutY="68.0" text="Cadastro de veículo">
+         <font>
+            <Font size="38.0" />
+         </font>
+      </Label>
+      <Label layoutX="84.0" layoutY="213.0" text="Marca">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="399.0" layoutY="213.0" text="Nome do veículo">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtNome" layoutX="399.0" layoutY="245.0" prefHeight="39.0" prefWidth="314.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Button fx:id="btnVoltar" blendMode="EXCLUSION" layoutX="852.0" layoutY="43.0" mnemonicParsing="false" onAction="#voltarParaTelaAnterior" prefHeight="25.0" prefWidth="86.0" text="Voltar" />
+      <Button fx:id="btnCadastrar" layoutX="681.0" layoutY="513.0" mnemonicParsing="false" onAction="#cadastrarVeiculo" prefHeight="55.0" prefWidth="180.0" style="-fx-background-color: #090a0c; -fx-background-radius: 5,4,3,5; -fx-background-insets: 0,1,2,0; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); -fx-text-fill: linear-gradient(white, #d0d0d0);;" text="Cadastrar veículo">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label layoutX="399.0" layoutY="329.0" text="Percentual de locação">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtPercentualLocacao" layoutX="399.0" layoutY="389.0" prefHeight="40.0" prefWidth="243.0">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </TextField>
+      <Label layoutX="761.0" layoutY="214.0" text="Ano">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtAno" layoutX="761.0" layoutY="245.0" prefHeight="40.0" prefWidth="100.0">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtValorDeCompra" layoutX="84.0" layoutY="389.0" prefHeight="40.0" prefWidth="147.0">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </TextField>
+      <Label layoutX="84.0" layoutY="359.0" text="Valor de compra">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="cbMarca" layoutX="84.0" layoutY="245.0" prefHeight="35.0" prefWidth="255.0" style="-fx-background-color: black;" />
+      <Label layoutX="399.0" layoutY="359.0" text="(Percentual do valor de compra do veículo à ser cobrado na locação)">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

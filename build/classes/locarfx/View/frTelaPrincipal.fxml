@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="bpPrincipal" maxHeight="680.0" maxWidth="1170.0" minHeight="680.0" minWidth="1170.0" prefHeight="680.0" prefWidth="1170.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="locarfx.Controller.TelaPrincipalController">
+    <opaqueInsets>
+        <Insets />
+    </opaqueInsets>
+    <top>
+        <VBox prefHeight="216.0" prefWidth="949.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox alignment="CENTER_RIGHT" prefHeight="79.0" prefWidth="1170.0">
+                    <Label fx:id="lbLogo" text="LoCar">
+                        <font>
+                            <Font name="SansSerif Bold" size="35.0" />
+                        </font>
+                        <HBox.margin>
+                            <Insets right="730.0" />
+                        </HBox.margin>
+                    </Label>
+                    <Button fx:id="btnSobre" blendMode="EXCLUSION" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" text="Sobre">
+                        <HBox.margin>
+                            <Insets right="50.0" top="50.0" />
+                        </HBox.margin>
+                    </Button>
+                    <Button fx:id="btnVoltar" layoutX="823.0" layoutY="83.0" mnemonicParsing="false" onAction="#voltarParaTelaAnterior" prefHeight="25.0" prefWidth="86.0" text="Log Off">
+                        <HBox.margin>
+                            <Insets right="50.0" top="50.0" />
+                        </HBox.margin>
+                    </Button>
+                    <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                    </padding>
+                </HBox>
+            <Label fx:id="lblUsuarioAtivo" text="Label">
+               <VBox.margin>
+                  <Insets left="70.0" />
+               </VBox.margin>
+            </Label>
+                <HBox prefHeight="64.0" prefWidth="950.0">
+                    <children>
+                        <MenuButton fx:id="mbCadastros" alignment="CENTER" blendMode="EXCLUSION" mnemonicParsing="false" prefHeight="33.0" prefWidth="234.0" text="CADASTROS">
+                            <items>
+                                <MenuItem fx:id="mitemCadUsuario" mnemonicParsing="false" text="Cadastrar Usuário" onAction="#abreCadastroUsuario" />
+                                <MenuItem fx:id="mitemCadMarca" mnemonicParsing="false" text="Cadastrar Marca" onAction="#abreCadastroMarca" />
+                                <MenuItem fx:id="mitemCadVeiculo" mnemonicParsing="false" text="Cadastrar Veículo" onAction="#abreCadastroVeiculo" />
+                                <MenuItem fx:id="mitemCadCliente" mnemonicParsing="false" text="Cadastrar Cliente" onAction="#abreCadastroCliente" />
+                                <MenuItem fx:id="mitemCadManutencao" mnemonicParsing="false" text="Cadastrar Manutenção" onAction="#abreCadastroManutencao" />
+                            </items>
+                        </MenuButton>
+                        <MenuButton fx:id="mbConsultas" alignment="CENTER" blendMode="EXCLUSION" mnemonicParsing="false" prefHeight="33.0" prefWidth="234.0" text="CONSULTAS">
+                            <items>
+                                <MenuItem fx:id="mitemConUsuario" mnemonicParsing="false" text="Consultar Usuários" />
+                                <MenuItem fx:id="mitemConMarca" mnemonicParsing="false" text="Consultar Marcas" />
+                                <MenuItem fx:id="mitemConVeiculo" mnemonicParsing="false" text="Consultar Veículos" />
+                                <MenuItem fx:id="mitemConCliente" mnemonicParsing="false" text="Consultar Clientes" />
+                                <MenuItem fx:id="mitemConManutencao" mnemonicParsing="false" text="Consultar Manutenções" />
+                            </items>
+                        </MenuButton>
+                        <Button fx:id="btnLocacoes" blendMode="EXCLUSION" mnemonicParsing="false" prefHeight="33.0" prefWidth="234.0" text="LOCAÇÕES" />
+                        <Button fx:id="btnRecebimento" blendMode="EXCLUSION" layoutX="354.0" layoutY="10.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="234.0" text="RECEBIMENTO" />
+                        <MenuButton fx:id="mbGastos" alignment="CENTER" blendMode="EXCLUSION" layoutX="182.0" layoutY="10.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="234.0" text="GASTOS">
+                            <items>
+                                <MenuItem fx:id="mitemGastosCompra" mnemonicParsing="false" text="Gastos em Compras" />
+                                <MenuItem fx:id="mitemGastosManut" mnemonicParsing="false" text="Gastos em Manutenções" />
+                            </items>
+                        </MenuButton>
+                    </children>
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin>
+                </HBox>
+            </children>
+        </VBox>
+    </top>
+    <center>
+        <VBox prefHeight="321.0" prefWidth="949.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label fx:id="lblUltimasLocacoes" alignment="CENTER" prefHeight="29.0" prefWidth="206.0" text="Últimas locações" textAlignment="CENTER">
+                    <VBox.margin>
+                        <Insets bottom="20.0" left="50.0" top="10.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <TableView fx:id="tbviewLocacoes" prefHeight="300.0" prefWidth="1170.0">
+                    <columns>
+                        <TableColumn fx:id="tbcolVendedor" prefWidth="158.0" text="Vendedor" />
+                        <TableColumn fx:id="tbcolCliente" prefWidth="161.0" text="Cliente" />
+                        <TableColumn fx:id="tbcolDataLocacao" prefWidth="169.0" text="Data de locação" />
+                        <TableColumn fx:id="tbcolDataDevolucao" prefWidth="173.0" text="Data de devolução" />
+                        <TableColumn fx:id="tbcolValorTotal" minWidth="0.0" prefWidth="145.0" text="Valor total" />
+                        <TableColumn fx:id="tbcolPagamento" prefWidth="196.0" text="Tipo de pagamento" />
+                        <TableColumn fx:id="tbcolStatus" prefWidth="167.0" text="Status" />
+                    </columns>
+                </TableView>
+            </children>
+        </VBox>
+    </center>
+    <bottom>
+        <Button fx:id="btnNovaLocacao" blendMode="EXCLUSION" mnemonicParsing="false" prefHeight="33.0" prefWidth="190.0" text="NOVA LOCAÇÃO" textAlignment="CENTER" BorderPane.alignment="CENTER_RIGHT" onAction="#abreCadastroLocacao" >
+            <BorderPane.margin>
+                <Insets bottom="35.0" right="100.0" />
+            </BorderPane.margin>
+        </Button>
+    </bottom>
+</BorderPane>
