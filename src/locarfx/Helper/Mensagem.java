@@ -1,15 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package locarfx.Helper;
 
 import javafx.scene.control.Alert;
 
-/**
- *
- * @author Administrador
- */
 public final class Mensagem {
 
     public static void ExibeMensagemCadastroRealizado() {

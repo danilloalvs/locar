@@ -8,10 +8,6 @@ import java.sql.ResultSet;
 import locarfx.Infra.FabricaConexao;
 import locarfx.Model.Manutencao;
 
-/**
- *
- * @author Administrador
- */
 public class ManutencaoDAO implements IBasicoDAO<Manutencao> {
 
     @Override

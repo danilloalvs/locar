@@ -10,10 +10,8 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
 import locarfx.DAO.ClienteDAO;
@@ -26,11 +24,8 @@ import locarfx.Model.Enums.FormaDePagamento;
 import locarfx.Model.Enums.StatusLocacao;
 import locarfx.Model.Locacao;
 import locarfx.Model.Veiculo;
+import java.time.LocalDate;
 
-/**
- *
- * @author Gabriel
- */
 public class CadastraLocacaoController implements Initializable {
 
     @FXML
@@ -160,7 +155,7 @@ public class CadastraLocacaoController implements Initializable {
         } catch (Exception erro) {
             Mensagem.ExibeMensagemNaoFoiPossivelCalcular();
         }
-    }
+    }  
 
     public void voltarParaTelaAnterior(ActionEvent event) {
         Stage stage = (Stage) btnVoltar.getScene().getWindow();

@@ -17,10 +17,6 @@ import locarfx.Helper.Mensagem;
 import locarfx.Model.Marca;
 import locarfx.Model.Veiculo;
 
-/**
- *
- * @author Administrador
- */
 public class CadastraVeiculoController implements Initializable {
 
     @FXML

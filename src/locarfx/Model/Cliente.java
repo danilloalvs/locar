@@ -2,10 +2,6 @@ package locarfx.Model;
 
 import java.util.Date;
 
-/**
- *
- * @author Gabriel
- */
 public class Cliente {
     private Integer codigoEndereco;
     private Integer codigo;   

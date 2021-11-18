@@ -1,10 +1,14 @@
 # Locar
-The best rental platorm that you have ever seen.
+Sistema de administração de locadora de veículos, desenvolvido durante o 6° semestre do curso de Engenharia da Computação, pela Faculdade de Tecnologia Termomecânica.
 
-### Credentials for the default user:
+### Usuário default para acesso ao sistema
 - login: administrador
 - senha: 1234
 
-> Switch the FabricaConexao class, for the right connection with SQL Server.
+> Para acesso ao sistema, executar o script de criação do banco no Management Studio, e alterar a classe de conexão com o banco de dados.
 
-- There another branches of the project with updates. The latest branch is the prime.
+### Tecnologias utilizadas:
+- Netbeans
+- JavaFX
+- Scene builder
+- SQL Server

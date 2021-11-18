@@ -50,14 +50,6 @@ public class LoginController implements Initializable {
         stageAtual.close();
     }
 
-    /**
-     * Método que verifica se o usuário está cadastrado no banco de dados, chama
-     * a tela principal e fecha a tela atual, setando o usuário da sessão ativa
-     *
-     * @param event
-     * @throws IOException
-     */
-    // 
     public void fazLogin(ActionEvent event) throws IOException {
 
         UsuarioDAO usuarioDAO = new UsuarioDAO();

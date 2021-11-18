@@ -8,14 +8,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import locarfx.Helper.Mensagem;
@@ -23,11 +18,6 @@ import locarfx.Helper.ViaCEP.ViaCEP;
 import locarfx.Helper.ViaCEP.ViaCEPEvents;
 import locarfx.Helper.ViaCEP.ViaCEPException;
 
-/**
- * FXML Controller class
- *
- * @author Gabriel
- */
 public class CadastraClienteController implements Initializable, ViaCEPEvents {
 
     @FXML
@@ -57,16 +47,10 @@ public class CadastraClienteController implements Initializable, ViaCEPEvents {
 
     ViaCEP viaCEP = new ViaCEP(this);
 
-    /**
-     * @return the novoCliente
-     */
     public Cliente getNovoCliente() {
         return novoCliente;
     }
 
-    /**
-     * @param novoCliente the novoUsuario to set
-     */
     public void setNovoCliente(Cliente novoCliente) {
         this.novoCliente = novoCliente;
     }
@@ -116,6 +100,7 @@ public class CadastraClienteController implements Initializable, ViaCEPEvents {
 
             Mensagem.ExibeMensagemCadastroRealizado();
             
+            txtCEP.setText("");
             txtRua.setText("");
             txtBairro.setText("");
             txtNumero.setText("");

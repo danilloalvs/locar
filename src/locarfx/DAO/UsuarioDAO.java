@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package locarfx.DAO;
 
 import java.sql.Connection;
@@ -57,14 +52,6 @@ public class UsuarioDAO implements IBasicoDAO<Usuario> {
         }
     }
 
-    /**
-     * Método que busca os dados do usuário no banco de dados.
-     *
-     * @param login
-     * @return Usuario
-     * @throws RuntimeException
-     */
-    //
     @Override
     public Usuario buscarPorNome(String login) {
         try (Connection connection = FabricaConexao.getConexao()) {
@@ -170,15 +157,6 @@ public class UsuarioDAO implements IBasicoDAO<Usuario> {
         }
     }
 
-    /**
-     * Método que verifica se o usuário e senha constam no banco de dados
-     *
-     * @param login
-     * @param senha
-     * @return boolean
-     * @throws SQLException
-     */
-    //
     public boolean validaLogin(String login, String senha) throws SQLException {
 
         Connection connection = FabricaConexao.getConexao();
@@ -189,7 +167,6 @@ public class UsuarioDAO implements IBasicoDAO<Usuario> {
 
         prepStmt.setString(1, login);
         prepStmt.setString(2, senha);
-        //prepStmt.executeUpdate();
 
         ResultSet resultset = prepStmt.executeQuery();
 

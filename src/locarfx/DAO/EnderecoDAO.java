@@ -8,10 +8,6 @@ import java.util.ArrayList;
 import locarfx.Infra.FabricaConexao;
 import locarfx.Model.Endereco;
 
-/**
- *
- * @author Gabriel
- */
 public class EnderecoDAO implements IBasicoDAO<Endereco> {
 
     @Override

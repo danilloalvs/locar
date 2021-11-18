@@ -1,9 +1,5 @@
 package locarfx.Model;
 
-/**
- *
- * @author Gabriel
- */
 public class Endereco {
     private Integer codigo;   
     private String cep;

@@ -1,9 +1,5 @@
 package locarfx.Model.Enums;
 
-/**
- *
- * @author Administrador
- */
 public enum FormaDePagamento {
     CRÉDITO,
     DÉBITO,

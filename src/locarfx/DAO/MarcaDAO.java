@@ -8,10 +8,6 @@ import java.util.ArrayList;
 import locarfx.Infra.FabricaConexao;
 import locarfx.Model.Marca;
 
-/**
- *
- * @author Administrador
- */
 public class MarcaDAO implements IBasicoDAO<Marca> {
 
     @Override

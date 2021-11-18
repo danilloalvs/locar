@@ -3,8 +3,6 @@ package locarfx.Controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -207,7 +205,7 @@ public class TelaPrincipalController implements Initializable {
     }
 
     public void populaTabela() {
-//https://www.ti-enxame.com/pt/java/como-preencher-um-tableview-com-dados-de-banco-de-dados/1042073033/
+        //https://www.ti-enxame.com/pt/java/como-preencher-um-tableview-com-dados-de-banco-de-dados/1042073033/
         data = FXCollections.observableArrayList();
 
         try {

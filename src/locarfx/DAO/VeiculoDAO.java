@@ -8,10 +8,6 @@ import java.util.ArrayList;
 import locarfx.Infra.FabricaConexao;
 import locarfx.Model.Veiculo;
 
-/**
- *
- * @author Gabriel
- */
 public class VeiculoDAO implements IBasicoDAO<Veiculo> {
 
     @Override

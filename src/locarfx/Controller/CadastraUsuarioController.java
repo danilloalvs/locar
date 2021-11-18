@@ -6,7 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -35,30 +34,18 @@ public class CadastraUsuarioController implements Initializable {
     private Usuario novoUsuario;
     private Stage dialogStage;
 
-    /**
-     * @return the novoUsuario
-     */
     public Usuario getNovoUsuario() {
         return novoUsuario;
     }
 
-    /**
-     * @param novoUsuario the novoUsuario to set
-     */
     public void setNovoUsuario(Usuario novoUsuario) {
         this.novoUsuario = novoUsuario;
     }
 
-    /**
-     * @return the dialogStage
-     */
     public Stage getDialogStage() {
         return dialogStage;
     }
 
-    /**
-     * @param dialogStage the dialogStage to set
-     */
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
     }

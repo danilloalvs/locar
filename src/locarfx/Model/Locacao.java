@@ -4,10 +4,6 @@ import java.util.Date;
 import locarfx.Model.Enums.FormaDePagamento;
 import locarfx.Model.Enums.StatusLocacao;
 
-/**
- *
- * @author Administrador
- */
 public class Locacao {
     
     private Integer codigoUsuario;

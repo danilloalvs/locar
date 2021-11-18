@@ -10,10 +10,6 @@ import locarfx.Model.Enums.FormaDePagamento;
 import locarfx.Model.Enums.StatusLocacao;
 import locarfx.Model.Locacao;
 
-/**
- *
- * @author Gabriel
- */
 public class LocacaoDAO implements IBasicoDAO<Locacao> {
 
     @Override
