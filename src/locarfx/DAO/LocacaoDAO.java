@@ -203,5 +203,5 @@ public class LocacaoDAO implements IBasicoDAO<Locacao> {
     public Locacao buscarPorNome(String nome) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
 }

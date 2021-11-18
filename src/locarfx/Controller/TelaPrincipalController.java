@@ -3,19 +3,32 @@ package locarfx.Controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
-import javafx.stage.Stage;
 import locarfx.Helper.UsuarioDaSessao;
+import locarfx.Infra.FabricaConexao;
 import locarfx.Main;
 import locarfx.Model.Enums.Cargo;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellDataFeatures;
+import javafx.scene.control.TableView;
+import javafx.stage.Stage;
+import javafx.util.Callback;
 
 public class TelaPrincipalController implements Initializable {
 
@@ -85,12 +98,14 @@ public class TelaPrincipalController implements Initializable {
     private Button btnVoltar;
     @FXML
     private Label lblUsuarioAtivo;
+    private ObservableList<ObservableList> data;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        populaTabela();
         lblUsuarioAtivo.setText("Bem-vindo, " + UsuarioDaSessao.instancia.getNomeUsuarioDaSessao());
-        
-        if(UsuarioDaSessao.instancia.getCargoUsuarioDaSessao() == Cargo.VENDEDOR){
+
+        if (UsuarioDaSessao.instancia.getCargoUsuarioDaSessao() == Cargo.VENDEDOR) {
             mitemCadUsuario.setDisable(true);
             mitemCadMarca.setDisable(true);
             mitemCadVeiculo.setDisable(true);
@@ -99,8 +114,7 @@ public class TelaPrincipalController implements Initializable {
             mbGastos.setDisable(true);
             btnRecebimento.setDisable(true);
         }
-        
-        
+
     }
 
     public void abreCadastroUsuario(ActionEvent event) throws IOException {
@@ -117,7 +131,7 @@ public class TelaPrincipalController implements Initializable {
 
     public void abreCadastroCliente(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Main.class.getResource("/locarfx/View/frCadastraCliente.fxml"));
-        
+
         Scene scene = new Scene(root, 1000, 680);
 
         Stage stage = new Stage();
@@ -126,10 +140,10 @@ public class TelaPrincipalController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
     }
-    
+
     public void abreCadastroMarca(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Main.class.getResource("/locarfx/View/frCadastraMarca.fxml"));
-        
+
         Scene scene = new Scene(root, 800, 600);
 
         Stage stage = new Stage();
@@ -138,10 +152,10 @@ public class TelaPrincipalController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
     }
-    
+
     public void abreCadastroVeiculo(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Main.class.getResource("/locarfx/View/frCadastraVeiculo.fxml"));
-        
+
         Scene scene = new Scene(root, 1000, 680);
 
         Stage stage = new Stage();
@@ -150,10 +164,10 @@ public class TelaPrincipalController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
     }
-    
+
     public void abreCadastroManutencao(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Main.class.getResource("/locarfx/View/frCadastraManutencao.fxml"));
-        
+
         Scene scene = new Scene(root, 1000, 680);
 
         Stage stage = new Stage();
@@ -162,10 +176,10 @@ public class TelaPrincipalController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
     }
-    
+
     public void abreCadastroLocacao(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Main.class.getResource("/locarfx/View/frCadastraLocacao.fxml"));
-        
+
         Scene scene = new Scene(root, 1000, 680);
 
         Stage stage = new Stage();
@@ -190,5 +204,73 @@ public class TelaPrincipalController implements Initializable {
         stageNovo.show();
 
         UsuarioDaSessao.instancia.limparUsuarioDaSessao();
+    }
+
+    public void populaTabela() {
+//https://www.ti-enxame.com/pt/java/como-preencher-um-tableview-com-dados-de-banco-de-dados/1042073033/
+        data = FXCollections.observableArrayList();
+
+        try {
+            Connection connection = FabricaConexao.getConexao();
+            //SQL FOR SELECTING ALL OF CUSTOMER
+            String SQL = "SELECT "
+                    + "USR_NOME AS Usuario, "
+                    + "CLN_NOME AS Cliente, "
+                    + "VCL_NOME AS Veiculo, "
+                    + "LCA_DATAINICIO AS DataInicio, "
+                    + "LCA_DATAFIM AS DataFim, "
+                    + "LCA_QTDDIAS AS QuantidadeDias, "
+                    + "LCA_VALORTOTAL AS ValorTotal, "
+                    + "LCA_PAGAMENTO AS Pagamento, "
+                    + "LCA_STATUS AS Status "
+                    + "FROM tbLocacao AS locacao "
+                    + "INNER JOIN tbCliente AS cliente "
+                    + "ON locacao.USR_CODIGO = cliente.CLN_CODIGO "
+                    + "INNER JOIN tbVeiculo AS veiculo "
+                    + "ON locacao.VCL_CODIGO = veiculo.VCL_CODIGO "
+                    + "INNER JOIN tbUsuario AS usuario "
+                    + "ON locacao.USR_CODIGO = usuario.USR_CODIGO";
+            //ResultSet
+            ResultSet resultSet = connection.createStatement().executeQuery(SQL);
+
+            /**
+             * ********************************
+             * TABLE COLUMN ADDED DYNAMICALLY * ********************************
+             */
+            for (int i = 0; i < resultSet.getMetaData().getColumnCount(); i++) {
+                //We are using non property style for making dynamic table
+                final int j = i;
+                TableColumn col = new TableColumn(resultSet.getMetaData().getColumnName(i + 1));
+                col.setCellValueFactory(new Callback<CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
+                    public ObservableValue<String> call(CellDataFeatures<ObservableList, String> param) {
+                        return new SimpleStringProperty(param.getValue().get(j).toString());
+                    }
+                });
+
+                tbviewLocacoes.getColumns().addAll(col);
+                System.out.println("Column [" + i + "] ");
+            }
+
+            /**
+             * ******************************
+             * Data added to ObservableList * ******************************
+             */
+            while (resultSet.next()) {
+                //Iterate Row
+                ObservableList<String> row = FXCollections.observableArrayList();
+                for (int i = 1; i <= resultSet.getMetaData().getColumnCount(); i++) {
+                    //Iterate Column
+                    row.add(resultSet.getString(i));
+                }
+                System.out.println("Row [1] added " + row);
+                data.add(row);
+
+            }
+
+            //FINALLY ADDED TO TableView
+            tbviewLocacoes.setItems(data);
+        } catch (Exception e) {
+
+        }
     }
 }
